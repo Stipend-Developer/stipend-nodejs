@@ -1,4 +1,4 @@
-stipend# A Node.js Stipend Client
+# A Node.js Stipend Client
 node-xsh is a Stipend client for node.js
 
 It is a fork of node-xsh which is a fork of the excellent Kapitalize Bitcoin Client (now removed from GitHub), and intended for use with stipendd. The purpose of this repository is:
