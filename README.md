@@ -1,5 +1,5 @@
 # A Node.js Stipend Client
-node-xsh is a Stipend client for node.js
+node-stipend is a Stipend client for node.js
 
 It is a fork of node-xsh which is a fork of the excellent Kapitalize Bitcoin Client (now removed from GitHub), and intended for use with stipendd. The purpose of this repository is:
 
@@ -447,14 +447,14 @@ var stipend = require('stipend')({
 })
 
 stipend.set('pass', 'somn')
-stipend.set({port:20102})
+stipend.set({port:46978})
 
 ```
 
 Available options and default values:
 
 + host *localhost*
-+ port *20102*
++ port *46978*
 + user
 + pass
 + passphrasecallback
@@ -465,7 +465,7 @@ Available options and default values:
 
 With an encryped wallet, any operation that accesses private keys requires a wallet unlock. A wallet is unlocked using the `walletpassphrase <passphrase> <timeout>` JSON-RPC method: the wallet will relock after `timeout` seconds.
 
-You may pass an optional function `passphrasecallback` to the `node-xsh` initialization function to manage wallet unlocks. `passphrasecallback` should be a function accepting three arguments:
+You may pass an optional function `passphrasecallback` to the `node-stipend` initialization function to manage wallet unlocks. `passphrasecallback` should be a function accepting three arguments:
 
     function(command, args, callback) {}
 
@@ -476,7 +476,7 @@ You may pass an optional function `passphrasecallback` to the `node-xsh` initial
 You may hard code your passphrase (not recommended) as follows:
 
 ```js
-var stipend = require('node-xsh')({
+var stipend = require('node-stipend')({
     passphrasecallback: function(command, args, callback) {
         callback(null, 'passphrase', 30);
     }
@@ -493,7 +493,7 @@ var rl = readline.createInterface({
   output: process.stdout
 })
 
-var stipend = require('node-xsh')({
+var stipend = require('node-stipend')({
   passphrasecallback: function(command, args, callback) {
     rl.question('Enter passphrase for "' + command + '" operation: ', function(passphrase) {
       if (passphrase) {
@@ -514,14 +514,14 @@ By default `stipendd` exposes its JSON-RPC interface via HTTP; that is, all RPC 
     rpcsslcertificatechainfile=/etc/ssl/certs/stipendd.crt
     rpcsslprivatekeyfile=/etc/ssl/private/stipendd.pem
 
-In order to securely access an SSL encrypted JSON-RPC interface you need a copy of the self-signed certificate from the server: in this case `stipendd.crt`. Pass your self-signed certificate in the `ca` option and set `https: true` and node-xsh is secured!
+In order to securely access an SSL encrypted JSON-RPC interface you need a copy of the self-signed certificate from the server: in this case `stipendd.crt`. Pass your self-signed certificate in the `ca` option and set `https: true` and node-stipend is secured!
 
 ```js
 var fs = require('fs')
 
 var ca = fs.readFileSync('stipendd.crt')
 
-var stipend = require('node-xsh')({
+var stipend = require('node-stipend')({
   user: 'rpcusername',
   pass: 'rpcpassword',
   https: true,
