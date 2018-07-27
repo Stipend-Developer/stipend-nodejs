@@ -12,7 +12,7 @@ It is a fork of node-xsh which is a fork of the excellent Kapitalize Bitcoin Cli
 
 You'll need a running instance of [stipendd](https://github.com/Stipend-Developer/stipend) to connect with.
 
-Then, install the node-stipend NPM package. ( Not yet available )
+Then, install the node-stipend NPM package.
 
 `npm install node-stipend`
 
