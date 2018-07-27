@@ -447,14 +447,14 @@ var stipend = require('stipend')({
 })
 
 stipend.set('pass', 'somn')
-stipend.set({port:46978})
+stipend.set({port:46979})
 
 ```
 
 Available options and default values:
 
 + host *localhost*
-+ port *46978*
++ port *46979*
 + user
 + pass
 + passphrasecallback

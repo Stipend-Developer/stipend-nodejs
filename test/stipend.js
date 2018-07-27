@@ -1,15 +1,15 @@
 const assert = require('chai').assert
   , sinon = require("sinon");
 
-const shield = require("../lib/shield")();
+const stipend = require("../lib/stipend")();
 
-describe('Shield API', function () {
+describe('Stipend API', function () {
   describe('invalid()', () => {
     it('should log missing command to console with Error', () => {
       const logStub = sinon.stub(console, "log");
 
       const fakeCmd = 'cmd';
-      shield.invalid(fakeCmd);
+      stipend.invalid(fakeCmd);
 
       const errArg = logStub.firstCall.args[0];
       assert.instanceOf(errArg, Error);
@@ -22,7 +22,7 @@ describe('Shield API', function () {
       const spy = sinon.spy();
 
       const fakeCmd = 'cmd';
-      shield.invalid(fakeCmd, spy);
+      stipend.invalid(fakeCmd, spy);
 
       const errArg = spy.firstCall.args[0];
       assert.instanceOf(errArg, Error);
@@ -32,10 +32,10 @@ describe('Shield API', function () {
 
   describe('exec()', () => {
     it('should call invalid()', () => {
-      const invalidStub = sinon.stub(shield, "invalid");
+      const invalidStub = sinon.stub(stipend, "invalid");
       const fakeCmd = 'cmd';
 
-      shield.exec(fakeCmd);
+      stipend.exec(fakeCmd);
 
       sinon.assert.calledWith(invalidStub, fakeCmd);
 
@@ -43,10 +43,10 @@ describe('Shield API', function () {
     });
 
     it('should call send()', () => {
-      const sendStub = sinon.stub(shield, "send");
+      const sendStub = sinon.stub(stipend, "send");
       const cmd = 'addMultiSigAddress';
 
-      shield.exec(cmd);
+      stipend.exec(cmd);
 
       sinon.assert.calledWith(sendStub, cmd);
 
@@ -61,14 +61,14 @@ describe('Shield API', function () {
 
       const exptectedAuthHeader = ('Basic ') + new Buffer(user + ':' + pass).toString('base64');
 
-      shield.auth(user, pass);
+      stipend.auth(user, pass);
 
-      assert.equal(exptectedAuthHeader, shield.opts.headers['Authorization']);
-      shield.opts.headers['Authorization'] = '';
+      assert.equal(exptectedAuthHeader, stipend.opts.headers['Authorization']);
+      stipend.opts.headers['Authorization'] = '';
     });
     it('should not set auth opts when no user and pass passed', () => {
-      shield.auth();
-      assert.equal('', shield.opts.headers['Authorization']);
+      stipend.auth();
+      assert.equal('', stipend.opts.headers['Authorization']);
     });
   })
 });
