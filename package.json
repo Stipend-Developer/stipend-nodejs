@@ -1,14 +1,14 @@
 {
-  "name": "node-xsh",
+  "name": "node-spd",
   "version": "0.3.9",
-  "description": "nodejs SHIELD client",
+  "description": "nodejs Stipend client",
   "keywords": [
-    "Shield",
-    "XSH"
+    "Stipend",
+    "SPD"
   ],
-  "repository": "git://github.com/shieldcoin/node-xsh.git",
-  "author": "SHIELD <shieldcoin@protonmail.com>",
-  "main": "lib/shield.js",
+  "repository": "git://github.com/Stipend-Developer/node-stipend.git",
+  "author": "STIPEND <nicksr987@gmail.com>",
+  "main": "lib/stipend.js",
   "engines": {
     "node": ">= 0.4.0"
   },

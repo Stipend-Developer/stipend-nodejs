@@ -1,31 +1,31 @@
-# A Node.js SHIELD Client
-node-xsh is a SHIELD client for node.js
+stipend# A Node.js Stipend Client
+node-xsh is a Stipend client for node.js
 
-It is a fork of node-verge which is a fork of the excellent Kapitalize Bitcoin Client (now removed from GitHub), and intended for use with SHIELDd. The purpose of this repository is:
+It is a fork of node-xsh which is a fork of the excellent Kapitalize Bitcoin Client (now removed from GitHub), and intended for use with stipendd. The purpose of this repository is:
 
-* Provide a one-stop resource for the Node.js developer to get started with SHIELD integration.
-* Prevent would-be SHIELD web developers worrying whether a SHIELD client will work out of the box, or have to construct their own.
-* Promote Node.js development of SHIELD web apps.
-* Identify and address any incompatibilities with the SHIELD APIs that exist now, and/or in the future.
+* Provide a one-stop resource for the Node.js developer to get started with Stipend integration.
+* Prevent would-be Stipend web developers worrying whether a Stipend client will work out of the box, or have to construct their own.
+* Promote Node.js development of Stipend web apps.
+* Identify and address any incompatibilities with the Stipend APIs that exist now, and/or in the future.
 
 ## Dependencies
 
-You'll need a running instance of [SHIELDd](https://github.com/SHIELDcoin/SHIELD) to connect with.
+You'll need a running instance of [stipendd](https://github.com/Stipend-Developer/stipend) to connect with.
 
-Then, install the node-xsh NPM package. ( Not yet available )
+Then, install the node-stipend NPM package. ( Not yet available )
 
-`npm install node-xsh`
+`npm install node-stipend`
 
 ## Examples
 
 Some code examples follow below
 
 ```js
-var shield = require('node-xsh')()
+var stipend = require('node-stipend')()
 
-shield.auth('myusername', 'mypassword')
+stipend.auth('myusername', 'mypassword')
 
-shield.getDifficulty(function() {
+stipend.getDifficulty(function() {
     console.log(arguments);
 })
 
@@ -36,9 +36,9 @@ shield.getDifficulty(function() {
 Pretty much everything is chainable.
 
 ```js
-var shield = require('node-xsh')()
+var stipend = require('node-stipend')()
 
-shield
+stipend
 .auth('MyUserName', 'mypassword')
 .getNewAddress()
 .getBalance()
@@ -49,7 +49,7 @@ shield
 The [Litecoin API](https://litecoin.info/Litecoin_API) is supported as direct methods. Use either camelcase or lowercase. TODO: make own API wiki
 
 ```js
-shield.getNewAddress(function(err, address) {
+stipend.getNewAddress(function(err, address) {
     this.validateaddress(address, function(err, info) {
 
     })
@@ -61,9 +61,9 @@ Executes the given command with optional arguments. Function `callback` defaults
 All of the API commands are supported in lowercase or camelcase. Or uppercase. Anycase!
 
 ```js
-shield.exec('getNewAddress')
+stipend.exec('getNewAddress')
 
-shield.exec('getbalance', function(err, balance) {
+stipend.exec('getbalance', function(err, balance) {
 
 })
 ```
@@ -73,7 +73,7 @@ shield.exec('getbalance', function(err, balance) {
 Accepts either key & value strings or an Object containing settings, returns `this` for chainability.
 
 ```js
-shield.set('host', '127.0.0.1')
+stipend.set('host', '127.0.0.1')
 ```
 
 ### .get(key [string])
@@ -81,7 +81,7 @@ shield.set('host', '127.0.0.1')
 Returns the specified option's value
 
 ```js
-shield.get('user')
+stipend.get('user')
 ```
 
 ### .auth(user [string], pass [string])
@@ -104,7 +104,7 @@ All [Litecoin API](https://litecoin.info/Litecoin_API) commands are supported, i
 <tr>
 <td> addmultisigaddress </td>
 <td> [nrequired] ["key","key"] [account] </td>
-<td> <b>Currently only available on testnet</b> Add a nrequired-to-sign multisignature address to the wallet. Each key is a shield address or hex-encoded public key. If [account] is specified, assign address to [account]. </td>
+<td> <b>Currently only available on testnet</b> Add a nrequired-to-sign multisignature address to the wallet. Each key is a stipend address or hex-encoded public key. If [account] is specified, assign address to [account]. </td>
 <td> N
 </td></tr>
 <tr>
@@ -115,8 +115,8 @@ All [Litecoin API](https://litecoin.info/Litecoin_API) commands are supported, i
 </td></tr>
 <tr>
 <td> dumpprivkey </td>
-<td> [shieldaddress] </td>
-<td> Reveals the private key corresponding to <shieldaddress< </td>
+<td> [stipendaddress] </td>
+<td> Reveals the private key corresponding to <stipendaddress< </td>
 <td> Y
 </td></tr>
 <tr>
@@ -127,14 +127,14 @@ All [Litecoin API](https://litecoin.info/Litecoin_API) commands are supported, i
 </td></tr>
 <tr>
 <td> getaccount </td>
-<td> [shieldaddress] </td>
+<td> [stipendaddress] </td>
 <td> Returns the account associated with the given address. </td>
 <td> N
 </td></tr>
 <tr>
 <td> getaccountaddress </td>
 <td> [account] </td>
-<td> Returns the current shield address for receiving payments to this account. </td>
+<td> Returns the current stipend address for receiving payments to this account. </td>
 <td> N
 </td></tr>
 <tr>
@@ -188,7 +188,7 @@ All [Litecoin API](https://litecoin.info/Litecoin_API) commands are supported, i
 <tr>
 <td> getgenerate </td>
 <td> </td>
-<td> Returns true or false whether shieldd is currently generating hashes </td>
+<td> Returns true or false whether stipendd is currently generating hashes </td>
 <td> N
 </td></tr>
 <tr>
@@ -240,7 +240,7 @@ All [Litecoin API](https://litecoin.info/Litecoin_API) commands are supported, i
 <tr>
 <td> getnewaddress </td>
 <td> [account] </td>
-<td> Returns a new shield address for receiving payments.  If [account] is specified (recommended), it is added to the address book so payments received with the address will be credited to [account]. </td>
+<td> Returns a new stipend address for receiving payments.  If [account] is specified (recommended), it is added to the address book so payments received with the address will be credited to [account]. </td>
 <td> N
 </td></tr>
 <tr>
@@ -251,8 +251,8 @@ All [Litecoin API](https://litecoin.info/Litecoin_API) commands are supported, i
 </td></tr>
 <tr>
 <td> getreceivedbyaddress </td>
-<td> [shieldaddress] [minconf=1] </td>
-<td> Returns the total amount received by <shieldaddress< in transactions with at least [minconf] confirmations. While some might consider this obvious, value reported by this only considers *receiving* transactions. It does not check payments that have been made *from* this address. In other words, this is not "getaddressbalance". Works only for addresses in the local wallet, external addresses will always show 0. </td>
+<td> [stipendaddress] [minconf=1] </td>
+<td> Returns the total amount received by <stipendaddress< in transactions with at least [minconf] confirmations. While some might consider this obvious, value reported by this only considers *receiving* transactions. It does not check payments that have been made *from* this address. In other words, this is not "getaddressbalance". Works only for addresses in the local wallet, external addresses will always show 0. </td>
 <td> N
 </td></tr>
 <tr>
@@ -282,7 +282,7 @@ All [Litecoin API](https://litecoin.info/Litecoin_API) commands are supported, i
 </li><li> "hash1": formatted hash buffer for second hash
 </li><li> "target": little endian hash target
 </li></ul>
-<p>If [data] is specified, tries to solve the block and returns true if it was successful. 
+<p>If [data] is specified, tries to solve the block and returns true if it was successful.
 </p>
 </td>
 <td> N
@@ -295,7 +295,7 @@ All [Litecoin API](https://litecoin.info/Litecoin_API) commands are supported, i
 </td></tr>
 <tr>
 <td> importprivkey </td>
-<td> [shieldprivkey] [label] </td>
+<td> [stipendprivkey] [label] </td>
 <td> Adds a private key (as returned by dumpprivkey) to your wallet. </td>
 <td> Y
 </td></tr>
@@ -331,7 +331,7 @@ All [Litecoin API](https://litecoin.info/Litecoin_API) commands are supported, i
 </li><li> "amount": total amount received by the address
 </li><li> "confirmations": number of confirmations of the most recent transaction included
 </li></ul>
-<p>To get a list of accounts on the system, execute shieldd listreceivedbyaddress 0 true
+<p>To get a list of accounts on the system, execute stipendd listreceivedbyaddress 0 true
 </p>
 </td>
 <td> N
@@ -357,7 +357,7 @@ All [Litecoin API](https://litecoin.info/Litecoin_API) commands are supported, i
 </td></tr>
 <tr>
 <td> sendfrom </td>
-<td> [fromaccount] [toshieldaddress] [amount] [minconf=1] [comment] [comment-to] </td>
+<td> [fromaccount] [tostipendaddress] [amount] [minconf=1] [comment] [comment-to] </td>
 <td> <amount< is a real and is rounded to 8 decimal places. Will send the given amount to the given address, ensuring the account has a valid balance using [minconf] confirmations. Returns the transaction ID if successful (not in JSON object). </td>
 <td> Y
 </td></tr>
@@ -369,13 +369,13 @@ All [Litecoin API](https://litecoin.info/Litecoin_API) commands are supported, i
 </td></tr>
 <tr>
 <td> sendtoaddress </td>
-<td> [shieldaddress] [amount] [comment] [comment-to] </td>
+<td> [stipendaddress] [amount] [comment] [comment-to] </td>
 <td> <amount< is a real and is rounded to 8 decimal places. Returns the transaction ID <txid< if successful. </td>
 <td> Y
 </td></tr>
 <tr>
 <td> setaccount </td>
-<td> [shieldaddress] [account] </td>
+<td> [stipendaddress] [account] </td>
 <td> Sets the account associated with the given address. Assigning address that is already assigned to the same account will create a new address associated with that account. </td>
 <td> N
 </td></tr>
@@ -389,7 +389,7 @@ Generation is limited to [genproclimit] processors, -1 is unlimited. </td>
 </td></tr>
 <tr>
 <td> signmessage </td>
-<td> [shieldaddress] [message] </td>
+<td> [stipendaddress] [message] </td>
 <td> Sign a message with the private key of an address. </td>
 <td> Y
 </td></tr>
@@ -402,18 +402,18 @@ Generation is limited to [genproclimit] processors, -1 is unlimited. </td>
 <tr>
 <td> stop </td>
 <td> </td>
-<td> Stop shield server. </td>
+<td> Stop stipend server. </td>
 <td> N
 </td></tr>
 <tr>
 <td> validateaddress </td>
-<td> [shieldaddress] </td>
-<td> Return information about [shieldaddress]. </td>
+<td> [stipendaddress] </td>
+<td> Return information about [stipendaddress]. </td>
 <td> N
 </td></tr>
 <tr>
 <td> verifymessage </td>
-<td> [shieldaddress] [signature] [message] </td>
+<td> [stipendaddress] [signature] [message] </td>
 <td> Verify a signed message. </td>
 <td> N
 </td></tr>
@@ -442,12 +442,12 @@ You may pass options to the initialization function or to the `set` method.
 
 ```js
 
-var shield = require('shield')({
+var stipend = require('stipend')({
     user:'user'
 })
 
-shield.set('pass', 'somn')
-shield.set({port:20102})
+stipend.set('pass', 'somn')
+stipend.set({port:20102})
 
 ```
 
@@ -476,7 +476,7 @@ You may pass an optional function `passphrasecallback` to the `node-xsh` initial
 You may hard code your passphrase (not recommended) as follows:
 
 ```js
-var shield = require('node-xsh')({
+var stipend = require('node-xsh')({
     passphrasecallback: function(command, args, callback) {
         callback(null, 'passphrase', 30);
     }
@@ -493,7 +493,7 @@ var rl = readline.createInterface({
   output: process.stdout
 })
 
-var shield = require('node-xsh')({
+var stipend = require('node-xsh')({
   passphrasecallback: function(command, args, callback) {
     rl.question('Enter passphrase for "' + command + '" operation: ', function(passphrase) {
       if (passphrase) {
@@ -508,20 +508,20 @@ var shield = require('node-xsh')({
 
 ### Secure RPC with SSL
 
-By default `shieldd` exposes its JSON-RPC interface via HTTP; that is, all RPC commands are transmitted in plain text across the network! To secure the JSON-RPC channel you can supply `shieldd` with a self-signed SSL certificate and an associated private key to enable HTTPS. For example, in your `shield.conf`:
+By default `stipendd` exposes its JSON-RPC interface via HTTP; that is, all RPC commands are transmitted in plain text across the network! To secure the JSON-RPC channel you can supply `stipendd` with a self-signed SSL certificate and an associated private key to enable HTTPS. For example, in your `stipend.conf`:
 
     rpcssl=1
-    rpcsslcertificatechainfile=/etc/ssl/certs/shieldd.crt
-    rpcsslprivatekeyfile=/etc/ssl/private/shieldd.pem
+    rpcsslcertificatechainfile=/etc/ssl/certs/stipendd.crt
+    rpcsslprivatekeyfile=/etc/ssl/private/stipendd.pem
 
-In order to securely access an SSL encrypted JSON-RPC interface you need a copy of the self-signed certificate from the server: in this case `shieldd.crt`. Pass your self-signed certificate in the `ca` option and set `https: true` and node-xsh is secured!
-    
+In order to securely access an SSL encrypted JSON-RPC interface you need a copy of the self-signed certificate from the server: in this case `stipendd.crt`. Pass your self-signed certificate in the `ca` option and set `https: true` and node-xsh is secured!
+
 ```js
 var fs = require('fs')
 
-var ca = fs.readFileSync('shieldd.crt')
+var ca = fs.readFileSync('stipendd.crt')
 
-var shield = require('node-xsh')({
+var stipend = require('node-xsh')({
   user: 'rpcusername',
   pass: 'rpcpassword',
   https: true,
@@ -536,12 +536,3 @@ npm install
 
 npm test
 ```
-
-## Bounties
-
-SHIELD donation address is avaialbe at the bottom of our [website](https://shieldcoin.github.io/)
-
-Donations for [SHIELD](https://shieldcoin.github.io/) will be used for bounties, and holding. As a side note: I encourage all GitHub repository owners to post a donation address so their community can easily support development financially.
-
-
-
